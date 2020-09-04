@@ -11,6 +11,14 @@ const payload = {
   },
 };
 
+it("Should throw error for invalid request", async () => {
+  let res = await request(app)
+    .post("/api/strategy")
+    .set({ portfolio: { key: "value" } })
+    .expect(400);
+  expect(res.body.errors[0]).toBeDefined();
+});
+
 it("should create a portfolio with stockData", async () => {
   await request(app)
     .post("/api/strategy")
