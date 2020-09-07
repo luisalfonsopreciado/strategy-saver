@@ -1,22 +1,23 @@
 import express from "express";
 import cors from "cors";
 import { newStrategyRouter } from "./routes/new-strategy";
-import bodyParser from "body-parser";
+import { json } from "body-parser";
 import { findStrategyByIdRouter } from "./routes/find-strategy-by-id";
-import { errorHandler, NotFoundError } from "@lpquizzy/common";
-import { send } from "process";
+import { NotFoundError } from "./errors";
+import { errorHandler } from "./middlewares";
 
 const app = express();
 
+app.set("trust proxy", true);
+app.use(json());
+
 app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(newStrategyRouter);
 app.use(findStrategyByIdRouter);
 
 app.all("*", async (req, res) => {
-  res.send("Not Found")
+  throw new NotFoundError();
 });
 
 app.use(errorHandler);

@@ -1,7 +1,7 @@
 import express, { Response, Request } from "express";
 import Portfolio from "../models/Portfolio";
 import { body } from "express-validator";
-import { validateRequest } from "@lpquizzy/common";
+import { validateRequest } from "../middlewares/validate-request";
 
 const router = express.Router();
 
