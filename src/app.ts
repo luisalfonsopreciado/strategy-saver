@@ -16,7 +16,7 @@ app.use(cors());
 app.use(newStrategyRouter);
 app.use(findStrategyByIdRouter);
 
-app.all("*", async (req, res) => {
+app.all("*", (req, res) => {
   throw new NotFoundError();
 });
 
