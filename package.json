@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "ts-node-dev src/index.ts",
-    "dev": "nodemon src/index.ts",
+    "dev": "env-cmd -f ./env/dev.env nodemon src/index.ts",
     "test": "jest --watchAll --no-cache --forceExit",
     "test:ci": "jest"
   },
