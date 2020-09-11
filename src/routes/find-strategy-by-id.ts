@@ -1,6 +1,7 @@
 import express, { Response, Request } from "express";
 import Portfolio from "../models/Portfolio";
 import mongoose from "mongoose";
+import { defaultData } from "./constants";
 
 const router = express.Router();
 
@@ -13,13 +14,13 @@ router.get("/api/strategy/:id", async (req: Request, res: Response) => {
   const id = req.params.id;
 
   if (!isValidId(id)) {
-    return res.send({});
+    return res.send(defaultData);
   }
 
   const portfolio = await Portfolio.findById(id);
 
-  if(!portfolio){
-    return res.send({})
+  if (!portfolio) {
+    return res.send(defaultData);
   }
 
   res.send(portfolio);

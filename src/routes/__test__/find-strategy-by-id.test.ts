@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 import Portfolio from "../../models/Portfolio";
 import request from "supertest";
 import { app } from "../../app";
+import { defaultData } from "../../routes/constants";
 
 const payload = {
   portfolio: {
@@ -38,5 +39,5 @@ it("Should return empty obj for no strategy", async () => {
   let res = await request(app)
     .get("/api/strategy/" + id)
     .expect(200);
-  expect(res.body).toEqual({});
+  expect(res.body).toEqual(defaultData);
 });
