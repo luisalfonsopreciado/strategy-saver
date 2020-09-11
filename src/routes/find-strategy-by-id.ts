@@ -11,12 +11,17 @@ const isValidId = (quizId: string) => {
 
 router.get("/api/strategy/:id", async (req: Request, res: Response) => {
   const id = req.params.id;
-  
+
   if (!isValidId(id)) {
     return res.send({});
   }
 
   const portfolio = await Portfolio.findById(id);
+
+  if(!portfolio){
+    return res.send({})
+  }
+
   res.send(portfolio);
 });
 
