@@ -25,7 +25,7 @@ export const defaultStockData = {
   interest: 2,
 };
 
-export const defaultPortfoio = {
+export const initialPortfolioId = {
   amount: 1,
   contractName: "initialPortfolioId",
   date,
@@ -35,6 +35,6 @@ export const defaultPortfoio = {
 };
 
 export const defaultData = {
-  portfolio: defaultPortfoio,
+  portfolio: { initialPortfolioId },
   stockData: defaultStockData,
 };
