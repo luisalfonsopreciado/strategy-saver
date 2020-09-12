@@ -1,5 +1,6 @@
 import express from "express";
 import cors from "cors";
+import { corsOptions } from "./cors";
 import { newStrategyRouter } from "./routes/new-strategy";
 import { json } from "body-parser";
 import { findStrategyByIdRouter } from "./routes/find-strategy-by-id";
@@ -11,7 +12,7 @@ const app = express();
 app.set("trust proxy", true);
 app.use(json());
 
-app.use(cors());
+app.use(cors(corsOptions));
 
 app.use(newStrategyRouter);
 app.use(findStrategyByIdRouter);
